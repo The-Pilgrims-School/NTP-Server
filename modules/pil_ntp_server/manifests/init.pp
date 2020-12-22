@@ -5,4 +5,18 @@ class pil_ntp_server {
     ensure => latest,
   }
 
+  service { 'ntp':
+    ensure  => running,
+    enable  => true,
+    require => Package['ntp']
+  }
+
+  file { '/etc/ntp.conf':
+    ensure => file,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0644',
+    notify => Service['ntp']
+  }
+
 }
