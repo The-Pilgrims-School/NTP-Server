@@ -16,7 +16,8 @@ class pil_ntp_server {
     owner  => 'root',
     group  => 'root',
     mode   => '0644',
-    notify => Service['ntp']
+    notify => Service['ntp'],
+    source => ('puppet:///modules/pil_ntp_server/ntp.conf')
   }
 
 }
